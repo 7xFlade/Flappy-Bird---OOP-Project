@@ -1,6 +1,10 @@
 #include "GameLoop.hpp"
 
-GameLoop::GameLoop() : window(nullptr), renderer(nullptr), GameState(false) {}
+GameLoop::GameLoop() : window(nullptr), renderer(nullptr), GameState(false) {
+    p.setSource(0,0,65, 55);
+    p.setDest(10,20,65,55);
+
+}
 
 bool GameLoop::getGameState(){
     return GameState;
@@ -12,11 +16,13 @@ void GameLoop::Initialize() {
 
     if (window) {
         renderer = SDL_CreateRenderer(window, -1, 0);
-        if (renderer) {
+        if (renderer) { 
             cout << "Succeeded!" << endl;
             GameState= true;
-            player=TextureManager::Texture("image/Frame-1 (1).png", renderer);
-            background=TextureManager::Texture("image/bg.png", renderer);
+            //player=TextureManager::Texture("image/Frame-1 (1).png", renderer);
+            p.CreateTexture("image/Frame-1 (1).png", renderer);
+            //background=TextureManager::Texture("image/bg.png", renderer);
+            b.CreateTexture("image/bg.png", renderer);
         } else {
             cout << "Renderer not created" << endl;
         }
@@ -47,20 +53,23 @@ void GameLoop::Event(){
 
 void GameLoop::Update(){
     //source Domension
-    srcPlayer.h=55;
-    srcPlayer.w=65;
-    srcPlayer.x=srcPlayer.y=0;
+    // srcPlayer.h=55;
+    // srcPlayer.w=65;
+    // srcPlayer.x=srcPlayer.y=0;
 
-    //destination dimension
-    destPlayer.w=65;
-    destPlayer.h=55;
-    destPlayer.x=destPlayer.y=5;
+    // //destination dimension
+    // destPlayer.w=65;
+    // destPlayer.h=55;
+    // destPlayer.x=destPlayer.y=5;
     
 }
+
 void GameLoop::Render() {
     SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, background, NULL, NULL);
-    SDL_RenderCopy(renderer, player, &srcPlayer, &destPlayer);
+    //SDL_RenderCopy(renderer, background, NULL, NULL);
+    b.Render(renderer, b.getTexture());
+    //SDL_RenderCopy(renderer, player, &srcPlayer, &destPlayer);
+    p.Render(renderer, p.getTexture(), p.getSrc(), p.getDest());
     SDL_RenderPresent(renderer);
 }
 

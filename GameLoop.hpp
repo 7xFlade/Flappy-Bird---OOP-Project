@@ -3,12 +3,15 @@
 #include <SDL_image.h>
 #include "TextureManager.hpp"
 #include "Player.hpp"
+#include "Object.hpp"
+#include "Background.hpp"
 #include <iostream>
 using namespace std;
 
 class GameLoop {
 private:
     Player p;
+    Background b;
     const int Height = 640;
     const int Width = 800; // Changed 'width' to 'Width' for consistency
     bool GameState;
