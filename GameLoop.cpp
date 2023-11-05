@@ -1,6 +1,8 @@
 #include "GameLoop.hpp"
 
 GameLoop::GameLoop() : window(nullptr), renderer(nullptr), GameState(false) {
+    window=NULL;
+    renderer=NULL;
     p.setSource(0,0,65, 55);
     p.setDest(10,20,65,55);
 
@@ -21,6 +23,8 @@ void GameLoop::Initialize() {
             GameState= true;
             //player=TextureManager::Texture("image/Frame-1 (1).png", renderer);
             p.CreateTexture("image/Frame-1 (1).png", renderer);
+            //p.CreateTexture1("image/Frame-2 (1).png", renderer);
+			//p.CreateTexture2("image/Frame-3 (1).png", renderer);
             //background=TextureManager::Texture("image/bg.png", renderer);
             b.CreateTexture("image/bg.png", renderer);
         } else {
@@ -32,6 +36,7 @@ void GameLoop::Initialize() {
 }
 
 void GameLoop::Event(){
+    p.GetJumpTime();
     SDL_PollEvent(&event1);
     if (event1.type==SDL_QUIT){
         GameState=false;
@@ -47,8 +52,20 @@ void GameLoop::Event(){
     if (event1.type==SDL_KEYDOWN){
         if (event1.key.keysym.sym==SDLK_SPACE){//specific to space key
             cout<<"Pressed"<<endl;
+            if (!p.JumpState())
+			{
+				p.Jump();
+			}
+			else
+			{
+				p.Gravity();
+			}
         }
+        
     }
+    else{
+            p.Gravity();
+        }
 }
 
 void GameLoop::Update(){
@@ -61,15 +78,17 @@ void GameLoop::Update(){
     // destPlayer.w=65;
     // destPlayer.h=55;
     // destPlayer.x=destPlayer.y=5;
-    
+    //p.Update();
 }
 
 void GameLoop::Render() {
     SDL_RenderClear(renderer);
     //SDL_RenderCopy(renderer, background, NULL, NULL);
-    b.Render(renderer, b.getTexture());
+    //b.Render(renderer, b.getTexture());
+    b.Render(renderer);
     //SDL_RenderCopy(renderer, player, &srcPlayer, &destPlayer);
-    p.Render(renderer, p.getTexture(), p.getSrc(), p.getDest());
+    //p.Render(renderer, p.getTexture(), p.getSrc(), p.getDest());
+    p.Render(renderer);
     SDL_RenderPresent(renderer);
 }
 

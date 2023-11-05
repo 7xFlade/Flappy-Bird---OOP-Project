@@ -4,6 +4,6 @@ void Background::Render(SDL_Renderer* ren, SDL_Texture* Tex, SDL_Rect src, SDL_R
             SDL_RenderCopy(ren, Tex, &src, &dest);
 }
 
-void Background::Render(SDL_Renderer* ren, SDL_Texture* Tex){
-            SDL_RenderCopy(ren, Tex,NULL, NULL);
+void Background::Render(SDL_Renderer* ren/*, SDL_Texture* Tex*/){
+            SDL_RenderCopy(ren, getTexture(),NULL, NULL);
 }
