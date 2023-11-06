@@ -16,6 +16,6 @@ class Object{
         SDL_Rect& getSrc();
         SDL_Rect& getDest();
         void CreateTexture(const char* address, SDL_Renderer* ren);
-        void virtual Render(SDL_Renderer* ren/*, SDL_Texture* Tex, SDL_Rect src, SDL_Rect dest*/)=0;
+        void virtual Render(SDL_Renderer* ren)=0;
 
 };

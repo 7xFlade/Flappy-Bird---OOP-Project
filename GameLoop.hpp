@@ -18,9 +18,7 @@ private:
     SDL_Window* window;
     SDL_Event event1;
     SDL_Renderer* renderer;
-    //SDL_Texture* player;
     SDL_Texture* background;
-    //SDL_Rect srcPlayer, destPlayer;
 public:
     GameLoop();
     bool getGameState();
