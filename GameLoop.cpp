@@ -2,8 +2,11 @@
 
 GameLoop::GameLoop() : window(nullptr), renderer(nullptr), GameState(false) {
     p.setSource(0,0,65, 55);
-    p.setDest(10,20,65,55);
-
+    p.setDest(250,Height/2,65,55);
+    ground1.setSource(0, 0, 112, 336);
+	ground1.setDest(0, 520, 112, 805);
+    ground2.setSource(0, 0, 112, 336);
+	ground2.setDest(0, 520, 112, 805);
 }
 
 bool GameLoop::getGameState(){
@@ -17,10 +20,13 @@ void GameLoop::Initialize() {
     if (window) {
         renderer = SDL_CreateRenderer(window, -1, 0);
         if (renderer) { 
+            //if Main menu start game clicked only then do the below so for that getsamestate func in main menu class
             cout << "Succeeded!" << endl;
             GameState= true;
             p.CreateTexture("image/Frame-1 (1).png", renderer);    
             b.CreateTexture("image/bg.png", renderer);
+            ground1.CreateTexture("image/base.png", renderer);
+			ground2.CreateTexture("image/base.png", renderer);
         } else {
             cout << "Renderer not created" << endl;
         }
@@ -52,12 +58,17 @@ void GameLoop::Event(){
 
 void GameLoop::Update(){
     p.Update();
+    ground1.GroundUpdate1();
+	ground2.GroundUpdate2();
     
 }
 
 void GameLoop::Render() {
     SDL_RenderClear(renderer);
     b.Render(renderer);
+    
+    ground1.GroundRender(renderer);
+	ground2.GroundRender(renderer);
     p.Render(renderer);
     SDL_RenderPresent(renderer);
 }

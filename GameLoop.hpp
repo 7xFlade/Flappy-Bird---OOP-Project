@@ -12,13 +12,14 @@ class GameLoop {
 private:
     Player p;
     Background b;
-    const int Height = 640;
+    Background ground1, ground2;
+    const int Height = 600;
     const int Width = 800; // Changed 'width' to 'Width' for consistency
     bool GameState;
     SDL_Window* window;
     SDL_Event event1;
     SDL_Renderer* renderer;
-    SDL_Texture* background;
+    //SDL_Texture* background;
 public:
     GameLoop();
     bool getGameState();

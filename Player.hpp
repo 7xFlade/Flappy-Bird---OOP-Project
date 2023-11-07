@@ -3,7 +3,7 @@
 
 class Player:public Object{
     private:
-        double gravity=0.5;
+        double gravity=350;
         double speed=0;
     public:
         void Update();
