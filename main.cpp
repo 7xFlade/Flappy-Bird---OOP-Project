@@ -6,10 +6,12 @@ int main(int argc, char* argv[]){
     double first;
     double last;
     g->Initialize();
+    g->MainMenu();
     while (g->getGameState()){
-        g->Render();
+        // g->Render();
         g->Event();
         g->Update();
+        g->Render();
         first=SDL_GetTicks();
         if (first-last<20.7){//fps
             SDL_Delay(20.7-(first-last));

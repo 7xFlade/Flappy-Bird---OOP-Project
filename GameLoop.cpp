@@ -35,6 +35,19 @@ void GameLoop::Initialize() {
     }
 }
 
+void GameLoop::MainMenu(){
+    menu.Initialize(renderer);
+    while (!menu.getClicked()){
+        if (menu.EventHandling(event1)==-1){
+            GameState=false;
+            break;
+        }
+        SDL_RenderClear(renderer);
+		menu.Render(renderer);
+		SDL_RenderPresent(renderer);
+    }
+}
+
 void GameLoop::Event(){
     SDL_PollEvent(&event1);
     if (event1.type==SDL_QUIT){

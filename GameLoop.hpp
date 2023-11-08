@@ -5,6 +5,7 @@
 #include "Player.hpp"
 #include "Object.hpp"
 #include "Background.hpp"
+#include "Mainmenu.hpp"
 #include <iostream>
 using namespace std;
 
@@ -13,6 +14,7 @@ private:
     Player p;
     Background b;
     Background ground1, ground2;
+    MainMenu menu;
     const int Height = 600;
     const int Width = 800; // Changed 'width' to 'Width' for consistency
     bool GameState;
@@ -22,6 +24,7 @@ private:
     //SDL_Texture* background;
 public:
     GameLoop();
+    void MainMenu();
     bool getGameState();
     void Update();
     void Initialize();
