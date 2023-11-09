@@ -7,6 +7,7 @@ int main(int argc, char* argv[]){
     double last;
     g->Initialize();
     g->MainMenu();
+    g->SelectBird();
     while (g->getGameState()){
         // g->Render();
         g->Event();

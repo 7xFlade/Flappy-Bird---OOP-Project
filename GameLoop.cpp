@@ -42,10 +42,29 @@ void GameLoop::MainMenu(){
             GameState=false;
             break;
         }
+        //cout<<"I am here";
         SDL_RenderClear(renderer);
 		menu.Render(renderer);
 		SDL_RenderPresent(renderer);
+        
     }
+    //sb1.CreateTexture("image/sb.png", renderer);
+
+
+}
+
+void GameLoop::SelectBird(){
+    sb.Initialize(renderer);
+    while (!sb.getChosenB()){
+        if (sb.EventHandling(event1)==-1){
+            GameState = false;
+			break;
+        }
+        SDL_RenderClear(renderer);
+		sb.Render(renderer);
+		SDL_RenderPresent(renderer);
+    }
+    //Blue=true;//make a setBlue, Yellow and Owl function, which we can access in the select Bird class, the function will set one of these bool values true and return a number according to whichever bird is true. then in Render function in this class I will set conditions eg: if returned value is 1 p.render()--which will correspond to blue bird, p1 to yellow and p2 to owl 
 }
 
 void GameLoop::Event(){
@@ -78,11 +97,14 @@ void GameLoop::Update(){
 
 void GameLoop::Render() {
     SDL_RenderClear(renderer);
-    b.Render(renderer);
+    //sb.Render(renderer);
+    b.Render(renderer); 
     
     ground1.GroundRender(renderer);
 	ground2.GroundRender(renderer);
-    p.Render(renderer);
+    //if (Blue==true){
+        p.Render(renderer);
+    //}
     SDL_RenderPresent(renderer);
 }
 

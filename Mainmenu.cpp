@@ -20,6 +20,7 @@ int MainMenu::EventHandling(SDL_Event& e)
 	else if (e.type == SDL_MOUSEBUTTONDOWN && e.motion.x > 285 && e.motion.x < 510 && e.motion.y > 450 && e.motion.y < 535)
 	{
 		isClicked = true;
+        
 	}
 	return 0;
 }
