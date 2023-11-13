@@ -9,5 +9,7 @@ class Player:public Object{
     public:
         void Update();
         void Gravity();
+        double getYPos ();//const
         void Render(SDL_Renderer* ren);
+        
 };

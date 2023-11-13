@@ -8,14 +8,19 @@ void Player::Update(){//edit it in a way that until space bar is not pressed for
     time++;
     setSource(0,0,65,55);
     if (time>100){
-        gravity+=0.5;
+        gravity+=1;//0.5 if space bar
         setDest(250,gravity,65,55);}
     else{
-        setDest(250,250,65,55);}
+        setDest(250,250,65,55);
+        }
     
 }
 void Player::Gravity(){//upward acceleration when space bar clicked
-    gravity-=40.5;
+    gravity-=10.5;//-10 if up key -70.5 if spce
     setSource(0,0,65,55);
     setDest(250,gravity,65,55);
+}
+
+double Player::getYPos(){
+    return gravity;
 }
