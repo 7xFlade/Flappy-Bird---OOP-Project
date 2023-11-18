@@ -19,6 +19,7 @@ int main(int argc, char* argv[]){
         }
         last=first;
     }
+    
     g->Clear();
     return 0;
 }

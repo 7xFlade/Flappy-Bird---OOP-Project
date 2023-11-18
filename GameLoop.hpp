@@ -9,6 +9,10 @@
 #include "SelectBird.hpp"
 #include "Obstacles.hpp"
 #include "CollisionManager.hpp"
+#include "EndWindow.hpp"
+#include "BirdB.hpp"
+#include "BirdY.hpp"
+#include "BirdO.hpp"
 #include "Score.hpp"
 #include <iostream>
 using namespace std;
@@ -16,13 +20,17 @@ using namespace std;
 class GameLoop {
 private:
     bool Blue=false;
-    Player p;
+    //Player p;
+    BirdB p;
+    BirdY y;
+    BirdO o;
     Background b;
     Background ground1, ground2;
     Obstacles b1;
     Score score;
     MainMenu menu;
     SelectBird sb;
+    EndWindow ew;
     //Obstacles brick; 
     const int Height = 600;
     const int Width = 800; 
@@ -35,6 +43,7 @@ public:
     GameLoop();
     void MainMenu();
     void SelectBird();
+    void Endgame();
     bool getGameState();
     void Update();
     //void Reset();

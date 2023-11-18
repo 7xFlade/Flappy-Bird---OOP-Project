@@ -7,10 +7,12 @@ class SelectBird{
     private:
         bool isChosenB;
         Background m;
+        int bird;
     public:
         SelectBird();
         void Initialize(SDL_Renderer* ren);
         int EventHandling(SDL_Event& b);
         void Render(SDL_Renderer* ren);
         bool getChosenB();
+        int getBird();
 };

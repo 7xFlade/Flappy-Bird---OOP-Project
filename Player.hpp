@@ -10,6 +10,6 @@ class Player:public Object{
         void Update();
         void Gravity();
         double getYPos ();//const
-        void Render(SDL_Renderer* ren);
+        virtual void Render(SDL_Renderer* ren)=0;
         
 };
