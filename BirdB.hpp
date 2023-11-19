@@ -1,7 +1,6 @@
 #pragma once
 #include "Player.hpp"
 
-#include <vector>
 
 class BirdB:public Player{
     private:

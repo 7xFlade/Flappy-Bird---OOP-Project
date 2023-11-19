@@ -25,8 +25,8 @@ void Background::GroundUpdate1()
 	else
 	{
 		distance1-=3;
-		setSource(0, 0, 112, 336);
-		setDest(distance1, 520, 850,805);
+		setSource(0, 0, 336 ,112);
+		setDest(distance1, 520, 830 ,112);
 	}
 }
 
@@ -39,8 +39,8 @@ void Background::GroundUpdate2()
 	else
 	{
 		distance2-=3;
-		setSource(0, 0, 112, 336);
-		setDest(distance2, 520, 850,805);
+		setSource(0, 0, 336, 112);
+		setDest(distance2, 520, 830 ,112);
 	}
 }
 
