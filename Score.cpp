@@ -1,5 +1,6 @@
 #include "Score.hpp"
-
+//this is one functionality of the increment operation
+//adding the overloaded functionality soon
 void Score::scoreInc(){
     score++;
 }
