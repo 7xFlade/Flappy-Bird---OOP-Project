@@ -11,6 +11,10 @@ void SelectBird::Initialize(SDL_Renderer* ren){
 
 int SelectBird::EventHandling(SDL_Event& b)
 {
+	//short summary of the following
+	//we are basically using SDL operations to figure out where on the screen the user is clicking
+	//on the screen, there are three different sprites or birds available
+	//depending on where the user is clicking, we can detemine their choice of sprite and load it
 	SDL_PollEvent(&b);
 	if (b.type == SDL_QUIT)
 	{
