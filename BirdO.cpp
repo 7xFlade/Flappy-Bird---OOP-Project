@@ -24,7 +24,7 @@ void BirdO::Render(SDL_Renderer* ren){
 		frate = 0;
 	}
 //polymorphic behaviour
-//we need three more create texture operation since one instance of the bird is already instantiated when the game loads. After that we only have three more pictures to cater out of the four for BirdB
+//we need three more create texture operation since one instance of the bird is already instantiated when the game loads. After that we only have three more pictures to cater out of the four for BirdO
 }
 void BirdO::createTexture1(const char* address, SDL_Renderer* ren){
     Tex1=TextureManager::Texture(address, ren);
