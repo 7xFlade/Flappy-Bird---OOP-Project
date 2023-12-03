@@ -15,7 +15,8 @@ void BirdY::Render(SDL_Renderer* ren){
 	{
 		frate = 0;
 	}
-
+//polymorphic behaviour
+//we only need one more create texture operation since one instance of the bird is already instantiated when the game loads. After that we only have one more picture to cater
 }
 void BirdY::createTexture1(const char* address, SDL_Renderer* ren){
     Tex1=TextureManager::Texture(address, ren);
