@@ -2,20 +2,21 @@
 #include "Background.hpp"
 #include<cstdlib>
 
+// Render method is used to render the background. 
 void Background::Render(SDL_Renderer* ren)
 {
 	SDL_RenderCopy(ren, getTexture(), NULL, NULL);
 }
 
 
-
+// GroundRender method is used to render the ground with specific source and destination rectangles
 void Background::GroundRender(SDL_Renderer* ren)
 {
 	SDL_RenderCopy(ren, getTexture(), &getSrc(), &getDest());
 }
 
 
-
+// GroundUpdate1 and GroundUpdate2 methods update the position of the ground texture for a scrolling effect
 void Background::GroundUpdate1()
 {
 	if (distance1 <= -800)
@@ -43,6 +44,3 @@ void Background::GroundUpdate2()
 		setDest(distance2, 520, 830 ,112);
 	}
 }
-
-
-
