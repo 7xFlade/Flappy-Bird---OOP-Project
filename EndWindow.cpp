@@ -1,12 +1,12 @@
 #include "EndWindow.hpp"
 
-
-
+// responsible for initializing the end window, particularly loading the background texture
 void EndWindow::Initialize(SDL_Renderer* ren)
 {
 	endBackground.CreateTexture("image/endscreen.png", ren);
 }
 
+// takes an SDL_Event reference and handles events, such as checking for a quit event or a mouse button 
 int EndWindow::EventHandling(SDL_Event& w)
 {
 	SDL_PollEvent(&w);
@@ -19,49 +19,16 @@ int EndWindow::EventHandling(SDL_Event& w)
 		restart = true;
         
 	}
-	//
-	// SDL_Init(SDL_INIT_VIDEO);
-    // TTF_Init();
-	// std::string fontpath = "C:\\Users\\A450L\\Downloads\\OOP-Project-Manal-Moiz-Naaseh-main\\OOP-Project-Manal-Moiz-Naaseh-main\\font3.ttf";
-    // font = TTF_OpenFont(fontpath.c_str(), 45);
-    // if (font==nullptr){std::cerr << "Failed to load font: " << TTF_GetError() << std::endl;}
-    // SDL_Init(SDL_INIT_VIDEO);
-    // TTF_Init();
-
-	// score += 1;
-
-    //     if (prevScore != score) {
-    //         prevScore = score;
-
-    //         if (texture) {
-    //             SDL_DestroyTexture(texture);
-    //             texture = nullptr;
-    //         }
-
-    //         sprintf(buffer, "SCORE: %d",score);
-    //         surface = TTF_RenderText_Solid(font, buffer, text_color);
-    //         texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-    //         SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
-    //         SDL_FreeSurface(surface);
-    //     }
-
-    //     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Set renderer color to black
-    //     SDL_RenderClear(renderer);
-    //     SDL_Rect dstrect = {400, 300, texW, texH};
-    //     SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-    //     SDL_RenderPresent(renderer);
-    
-	
-
 	return 0;
 }
 
+// The Render method is responsible for rendering the end window, presumably using the background texture
 void EndWindow::Render(SDL_Renderer* ren)
 {
 	endBackground.Render(ren);
 }
 
+// It is used to check whether a restart is requested
 bool EndWindow::getRestart()
 {
 	return restart;
@@ -70,7 +37,4 @@ bool EndWindow::getRestart()
 EndWindow::~EndWindow()
 {
 	restart = false;
-	
-    // TTF_CloseFont(font);
-    // TTF_Quit();
 }
