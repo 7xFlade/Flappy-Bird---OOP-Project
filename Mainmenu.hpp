@@ -3,7 +3,8 @@
 #include<SDL_image.h>
 #include "Background.hpp"
 
-class MainMenu{
+class MainMenu
+{
     public:
         bool isClicked;
         Background menuBackground; 
@@ -14,6 +15,4 @@ class MainMenu{
         int EventHandling(SDL_Event& e);
         void Render(SDL_Renderer* ren);
         bool getClicked();
-
-
 };
