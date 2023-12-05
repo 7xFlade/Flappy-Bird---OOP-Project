@@ -19,9 +19,9 @@
 #include <iostream>
 using namespace std;
 
-class GameLoop {
+class GameLoop 
+{
 private:
-    //Player p;
     BirdB p;
     BirdY y;
     BirdO o;
@@ -38,7 +38,6 @@ private:
     MainMenu menu;
     SelectBird sb;
     EndWindow ew;
-    //Obstacles brick; 
     const int Height = 600;
     const int Width = 800; 
     int points = 0;
