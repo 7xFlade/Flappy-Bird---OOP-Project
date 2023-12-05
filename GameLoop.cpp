@@ -1,5 +1,6 @@
 #include "GameLoop.hpp"
 
+// Initializes member variables, including objects for different game elements like pipes, birds, ground, etc.
 GameLoop::GameLoop() : window(nullptr), renderer(nullptr), GameState(false) {
     p.setSource(0,0,65, 55);
     p.setDest(250,Height/2,65,55);
@@ -25,10 +26,14 @@ GameLoop::GameLoop() : window(nullptr), renderer(nullptr), GameState(false) {
 	Pipe_Below3.setDest(0, 350, 52,320);
 }
 
+// Getter function for the GameState member variable.
 bool GameLoop::getGameState(){
     return GameState;
 }
 
+// initializes SDL and creates a window and renderer.
+// Loads textures for various game elements using the CreateTexture functions.
+// Sets GameState to true if the initialization is successful.
 void GameLoop::Initialize() {
     SDL_Init(SDL_INIT_EVERYTHING);
     window = SDL_CreateWindow("Flappy Bird", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Width, Height, SDL_WINDOW_RESIZABLE);
@@ -66,6 +71,8 @@ void GameLoop::Initialize() {
     }
 }
 
+// Displays the main menu and waits for the player to start the game.
+// Uses the Render function to render the menu.
 void GameLoop::MainMenu(){
     menu.Initialize(renderer);
     while (!menu.getClicked()){
@@ -79,6 +86,8 @@ void GameLoop::MainMenu(){
     }
 }
 
+// Displays a bird selection menu and waits for the player to choose a bird.
+// Uses the Render function to render the selection menu.
 void GameLoop::SelectBird(){
     sb.Initialize(renderer);
     while (!sb.getChosenB()){
@@ -92,6 +101,9 @@ void GameLoop::SelectBird(){
     }
 }
 
+// Displays the end game screen.
+// Uses SDL_ttf for text rendering to display the player's score.
+// Uses the Render function to render the end game screen
 void GameLoop::Endgame() {
     GameState = true;
     ew.Initialize(renderer);
@@ -144,7 +156,8 @@ void GameLoop::Endgame() {
     TTF_Quit();
 }
 
-
+// Handles SDL events, including quitting the game when the window is closed.
+// Checks for keyboard events (specifically, the up arrow key) to trigger bird jumping.
 void GameLoop::Event(){
     SDL_PollEvent(&event1);
     if (event1.type==SDL_QUIT){
@@ -175,7 +188,9 @@ void GameLoop::Event(){
 
 }
 
-
+// Updates the game state, including the bird's position, score, and checkpoint logic.
+// Handles the movement and updates of pipes, ground, and the selected bird.
+// Calls CollisionDetection to check for collisions
 void GameLoop::Update(){
     timer++;
     if (timer>100){
@@ -275,6 +290,8 @@ void GameLoop::Update(){
     CollisionDetection();
 }
 
+// Checks for collisions between the bird and pipes/ground.
+// If a collision is detected, it sets GameState to false
 void GameLoop::CollisionDetection(){
     if (sb.getBird()==1){
         if (CollisionManager::checkCollision(&p.getDest(), &Pipe_Above1.getDest()) || CollisionManager::checkCollision(&p.getDest(), &Pipe_Below1.getDest()) || 
@@ -337,6 +354,7 @@ void GameLoop::CollisionDetection(){
     }
 }
 
+// Renders the game elements, including background, pipes, ground, and the selected bird.
 void GameLoop::Render() {
     t1++;
     
@@ -366,6 +384,7 @@ void GameLoop::Render() {
     SDL_RenderPresent(renderer);
 }
 
+// Destroys the SDL window and renderer when the game is finished
 void GameLoop::Clear() {
     cout<<score.getScore();
     SDL_DestroyRenderer(renderer);
