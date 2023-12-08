@@ -3,7 +3,8 @@
 #include<SDL_image.h>
 #include "Background.hpp"
 
-class SelectBird{
+class SelectBird
+{
     private:
         bool isChosenB;
         Background m;
