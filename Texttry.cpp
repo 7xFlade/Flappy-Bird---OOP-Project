@@ -6,8 +6,6 @@ TTF_Init();
     SDL_Texture *highscoreTexture = nullptr;
     SDL_Surface *highscoreSurface = nullptr;
 
-
-
     while (!ew.getRestart())
     {
         if (ew.EventHandling(event1) == -1)
@@ -62,13 +60,9 @@ TTF_Init();
         SDL_FreeSurface(highscoreSurface);
 
         SDL_RenderPresent(renderer);
-
-
-
-
-
     }
-    // // if restart clicked
+
+// if restart clicked
     if (ew.getRestart())
     {
         GameState = true;
