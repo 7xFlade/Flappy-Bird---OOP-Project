@@ -1,6 +1,7 @@
 #pragma once 
 
-class Score{
+class Score
+{
     private:
         double score=0;
         double highscore=0;
