@@ -3,7 +3,8 @@
 #include<SDL_image.h>
 #include "Background.hpp"
 
-class PauseScreen{
+class PauseScreen
+{
     public:
         Background paused; 
     public:
