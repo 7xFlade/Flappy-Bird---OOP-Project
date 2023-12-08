@@ -3,21 +3,7 @@
 void Obstacles::Render(SDL_Renderer* ren){
     SDL_RenderCopy(ren, getTexture(), &getSrc(), &getDest());
 }
-// void Obstacles::Update(){
-//     leftward-=3;
-//         setSource(0,0,52,320);
-//         setDest(leftward,400,52,120);
-    
-// }
-// void Obstacles::OInitialize(SDL_Renderer* ren){
-//     obs.CreateTexture("image/brick_3.png", ren);
-// }
-// void Obstacles::Update1(){
-//     leftward-=3;
-//     setSource(0,0,52,320);
-//     setDest(leftward,0,52,220);
-   
-// }
+
 bool Obstacles::Pipe_Above1Update(int incY, int &score)
 {
 	this->incY1 = incY;
