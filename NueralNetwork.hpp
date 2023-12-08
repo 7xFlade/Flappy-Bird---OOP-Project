@@ -16,4 +16,3 @@ public:
 	void Update(int birdY, int CheckPointY);
 
 };
-
