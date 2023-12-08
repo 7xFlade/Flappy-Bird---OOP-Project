@@ -1,20 +1,28 @@
 #include "Score.hpp"
-//this is one functionality of the increment operation
-//adding the overloaded functionality soon
-void Score::scoreInc(){
-    score++;
+
+//operator overloading obj++
+int Score::operator++(int){
+    int x=score+1;
+    return x;
 }
-//current score value is compared everytime to the existing high score value
-void Score::setHighscore(const double x){
-    if (x>=highscore){
+//mutating it 
+void Score::setscore(const int x){
+    score=x;
+    
+}
+
+//if score>highscore
+void Score::setHighscore(const int x){
+    if (x>highscore){
         highscore=x;
     }
 }
-//the following are standard getters for both the score and the high score      
-double Score::getScore() const{
+
+//Accessors of score and highscore    
+int Score::getScore() const{
     return score;
 }
         
-double Score::getHighschore() const{
+int Score::getHighschore() const{
     return highscore;
 }
