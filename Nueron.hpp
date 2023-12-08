@@ -10,4 +10,3 @@ public:
 	void setValue(double val);
 	friend class NeuralNetwork;
 };
-
