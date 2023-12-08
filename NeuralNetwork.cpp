@@ -28,4 +28,3 @@ NeuralNetwork::~NeuralNetwork()
 	threshold = 0;
 	subDivisor = 0;
 }
-
