@@ -1,7 +1,8 @@
 #pragma once
 #include "Object.hpp"
 
-class Player:public Object{
+class Player:public Object
+{
     private:
         double gravity=250;
         double speed=0;
