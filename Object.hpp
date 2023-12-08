@@ -4,7 +4,8 @@
 #include <iostream>
 
 
-class Object{
+class Object
+{
     private:
         SDL_Rect src,dest;
         SDL_Texture* Tex;
