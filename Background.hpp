@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.hpp"
 
+//inheriting the background from the object class
 class Background :public Object
 {
 private:
