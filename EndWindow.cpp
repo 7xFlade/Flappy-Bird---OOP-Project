@@ -36,5 +36,6 @@ bool EndWindow::getRestart()
 
 EndWindow::~EndWindow()
 {
+	//destructor sets the value of restart to false so that the game knows that it is not to restart and can call all relevant destroy functionalities
 	restart = false;
 }
