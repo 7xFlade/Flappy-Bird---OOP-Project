@@ -15,6 +15,7 @@ void Obstacles::Render(SDL_Renderer* ren){
 //   True if the obstacle requires a score update, false otherwise
 bool Obstacles::Pipe_Above1Update(int incY, int& score)
 {
+    //checking for different pipe distances
     this->incY1 = incY;
     if (pipeDistance1 <= -100)
     {
@@ -39,6 +40,7 @@ bool Obstacles::Pipe_Above1Update(int incY, int& score)
 bool Obstacles::Pipe_Below1Update(int incY)
 {
     this->incY1 = incY;
+    //checking for different pipe distances
     if (pipeDistance1 <= -100)
     {
         pipeDistance1 += 900;
@@ -57,6 +59,7 @@ bool Obstacles::Pipe_Below1Update(int incY)
 bool Obstacles::Pipe_Above2Update(int incY, int& score)
 {
     this->incY2 = incY;
+    //checking for different pipe distances
     if (pipeDistance2 <= -100)
     {
         pipeDistance2 += 900;
@@ -75,6 +78,7 @@ bool Obstacles::Pipe_Above2Update(int incY, int& score)
 bool Obstacles::Pipe_Below2Update(int incY)
 {
     this->incY2 = incY;
+    //checking for different pipe distances
     if (pipeDistance2 <= -100)
     {
         pipeDistance2 += 900;
@@ -93,6 +97,7 @@ bool Obstacles::Pipe_Below2Update(int incY)
 bool Obstacles::Pipe_Above3Update(int incY, int& score)
 {
     this->incY3 = incY;
+    //checking for different pipe distances
     if (pipeDistance3 <= -100)
     {
         pipeDistance3 += 900;
@@ -112,6 +117,7 @@ bool Obstacles::Pipe_Above3Update(int incY, int& score)
 bool Obstacles::Pipe_Below3Update(int incY)
 {
     this->incY3 = incY;
+    //checking for different pipe distances
     if (pipeDistance3 <= -100)
     {
         pipeDistance3 += 900;
