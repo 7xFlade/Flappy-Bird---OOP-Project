@@ -2,6 +2,7 @@
 
 bool CollisionManager::checkCollision(SDL_Rect* A, SDL_Rect* B)
 {
+	//checking for collision using standard SDL function
     SDL_bool Collision = SDL_HasIntersection(A, B);
 	if (Collision)
 	{   return true;
