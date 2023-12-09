@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.hpp"
 
+//part of the three available sprites for the user
 class BirdO:public Player{
     private:
         int frate=0;
