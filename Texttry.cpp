@@ -1,4 +1,5 @@
 TTF_Init();
+    //load the relevant font path
     TTF_Font *font = TTF_OpenFont("C:\\Users\\A450L\\Downloads\\OOP-Project-Manal-Moiz-Naaseh-main\\OOP-Project-Manal-Moiz-Naaseh-main\\font3.ttf", 25);
     SDL_Color text_color = {0, 0, 0};
     SDL_Texture *scoreTexture = nullptr;
@@ -8,6 +9,7 @@ TTF_Init();
 
     while (!ew.getRestart())
     {
+        //changing game state according to different events
         if (ew.EventHandling(event1) == -1)
         {
             GameState = false;
@@ -23,7 +25,7 @@ TTF_Init();
         // Render and update the score
         //score1 = score.getScore() / 50;
         score1 = s / 50;
-        score.setHighscore(score1); ////
+        score.setHighscore(score1); //setting the highscore
 
         int score2 = score.getHighschore();
         char scoreText[50];
@@ -62,7 +64,7 @@ TTF_Init();
         SDL_RenderPresent(renderer);
     }
 
-// if restart clicked
+// functionality for restart condition
     if (ew.getRestart())
     {
         GameState = true;
@@ -72,7 +74,7 @@ TTF_Init();
         ew.setRestart(false);
         Reset();
     }
-
+    //destroying all textures
     if (scoreTexture)
     {
         SDL_DestroyTexture(scoreTexture);
