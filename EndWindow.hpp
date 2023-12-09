@@ -17,8 +17,10 @@ class EndWindow{
         // SDL_Color text_color = {255, 255, 255};
     public:
         ~EndWindow();
+        //initializing the renderer for the end window
         void Initialize(SDL_Renderer* ren);
         int EventHandling(SDL_Event& e);
         void Render(SDL_Renderer* ren);
+        //checking game state to see if the user wants to restart
         bool getRestart();
 };
