@@ -22,20 +22,27 @@ using namespace std;
 class GameLoop 
 {
 private:
+//sprite declarations
     BirdB p;
     BirdY y;
     BirdO o;
+//background declarations
     Background b;
     Background ground1, ground2;
+//obstacle declarations
     Obstacles Pipe_Above1;
 	Obstacles Pipe_Below1;
 	Obstacles Pipe_Above2;
 	Obstacles Pipe_Below2;
 	Obstacles Pipe_Above3;
+//neural network declaration
     NeuralNetwork neuralNetwork;
 	Obstacles Pipe_Below3;
+//score declaration
     Score score;
+//main menu declaration
     MainMenu menu;
+//select bird screen declaration
     SelectBird sb;
     EndWindow ew;
     const int Height = 600;
@@ -56,12 +63,18 @@ private:
     
 public:
     GameLoop();
+//loading main menu
     void MainMenu();
+//loading select bird screen
     void SelectBird();
+//loading end game screen
     void Endgame();
+//getting game state
     bool getGameState();
+//updating game functionalities according to game state
     void Update();
     //void Reset();
+//checking for collision
     void CollisionDetection();
     void Initialize();
     void Event();
