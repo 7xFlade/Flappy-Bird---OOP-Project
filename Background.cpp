@@ -24,6 +24,7 @@ void Background::GroundUpdate1()
 	{
 		distance1 -= 3;
 		setSource(0, 0, 336, 112);
+		//setting destination according to the distance
 		setDest(distance1, 520, 805, 112);
 	}
 }
@@ -37,6 +38,7 @@ void Background::GroundUpdate2()
 	{
 		distance2 -= 3;
 		setSource(0, 0, 336, 112);
+		//setting destination according to the distance
 		setDest(distance2, 520, 805, 112);
 	}
 }
