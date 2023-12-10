@@ -1,18 +1,12 @@
 #pragma once
 #include "Object.hpp"
 
-//inheriting the background from the object class
 class Background :public Object
 {
 private:
+	//attributes which will be used as x coordinate when updating ground
 	int distance1 = 0;
 	int distance2 = 800;
-	int pipeDistance1 = 400;
-	int pipeDistance2 = 700;
-	int pipeDistance3 = 1000;
-	int incY1 = 0;
-	int incY2 = 0;
-	int incY3 = 0;
 public:
 	void GroundUpdate1();
 	void GroundUpdate2();
