@@ -1,9 +1,9 @@
 #include "BirdB.hpp"
 #include "TextureManager.hpp"
 
-// The Render method is used to render the bird based on its frame rate
-void BirdO::Render(SDL_Renderer* ren)
-{
+//Rendering between 4 frames of owl to make appear flying
+void BirdO::Render(SDL_Renderer* ren){
+    
     frate++;
 	if (frate < 16)
 	{
@@ -25,11 +25,10 @@ void BirdO::Render(SDL_Renderer* ren)
 	{
 		frate = 0;
 	}
-//polymorphic behaviour
-//we need three more create texture operation since one instance of the bird is already instantiated when the game loads. After that we only have three more pictures to cater out of the four for BirdO
+
 }
 
-// createTexture1, createTexture2, and createTexture3 methods are used to create additional textures 
+//creating Texture for the 3 frames of the owl
 void BirdO::createTexture1(const char* address, SDL_Renderer* ren){
     Tex1=TextureManager::Texture(address, ren);
 }
@@ -39,3 +38,4 @@ void BirdO::createTexture2(const char* address, SDL_Renderer* ren){
 void BirdO::createTexture3(const char* address, SDL_Renderer* ren){
     Tex2=TextureManager::Texture(address, ren);
 }
+

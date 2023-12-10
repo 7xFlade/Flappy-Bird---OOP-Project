@@ -3,18 +3,18 @@
 #include<SDL_image.h>
 #include "Background.hpp"
 
-//Main Screen
-class MainMenu{
+//Instructions Screen
+class Instructions{
     public:
-        bool isClicked;
-        Background menuBackground; 
+        bool next;
+        Background inst; 
     public:
-        MainMenu();
-        ~MainMenu();
+        Instructions();
+        ~Instructions();
         void Initialize(SDL_Renderer* ren);
         int EventHandling(SDL_Event& e);
         void Render(SDL_Renderer* ren);
-        bool getClicked();
+        bool getNext() const;
 
 
 };

@@ -1,9 +1,9 @@
 #include "BirdB.hpp"
 #include "TextureManager.hpp"
 
-// The Render method is used to render the bird based on its frame rate
-void BirdY::Render(SDL_Renderer* ren)
-{
+//Rendering the two frames of yellow birds
+void BirdY::Render(SDL_Renderer* ren){
+    
     frate++;
 	if (frate < 10)
 	{
@@ -17,10 +17,14 @@ void BirdY::Render(SDL_Renderer* ren)
 	{
 		frate = 0;
 	}
-//polymorphic behaviour
-//we only need one more create texture operation since one instance of the bird is already instantiated when the game loads. After that we only have one more picture to cater
+
 }
-// createTexture1, createTexture2, and createTexture3 methods are used to create additional textures
 void BirdY::createTexture1(const char* address, SDL_Renderer* ren){
     Tex1=TextureManager::Texture(address, ren);
+}
+void BirdY::createTexture2(const char* address, SDL_Renderer* ren){
+    //
+}
+void BirdY::createTexture3(const char* address, SDL_Renderer* ren){
+    //
 }

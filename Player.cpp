@@ -1,45 +1,38 @@
 #include "Player.hpp"
 
-// Function to update the player's state
-void Player::Update() {
+
+void Player::Update(){//constant downward gravity
     time++;
-
-    // Set the source rectangle for rendering
-    setSource(0, 0, 65, 55);
-
-    // If more than 100 updates have occurred, apply gravity
-    if (time > 100) {
-        gravity += 1.25; // Adjust gravity value based on requirements
-        setDest(150, gravity, 65, 55);
-    } else {
-        // If less than or equal to 100 updates, keep the player at a fixed position
-        setDest(150, 250, 65, 55);
-    }
+    setSource(0,0,65,55);
+    if (time>100){//to not start updating immediately
+        gravity+=1.25;
+        setDest(150,gravity,65,55);}
+    else{
+        setDest(150,250,65,55);
+        }
+    
+}
+void Player::Gravity(){//upward acceleration when up key clicked
+    time++;
+    setSource(0,0,65,55);
+    if (time>100){//to not start updating immediately
+        gravity-=10.5;//0.5 if space bar
+        setDest(150,gravity,65,55);}
+    else{
+        setDest(150,250,65,55);
+        }
 }
 
-// Function to simulate gravity by adjusting the player's position
-void Player::Gravity() {
-    time++;
-
-    // Set the source rectangle for rendering
-    setSource(0, 0, 65, 55);
-
-    // If more than 100 updates have occurred, apply upward acceleration
-    if (time > 100) {
-        gravity -= 10.5; // Adjust acceleration value based on requirements
-        setDest(150, gravity, 65, 55);
-    } else {
-        // If less than or equal to 100 updates, keep the player at a fixed position
-        setDest(150, 250, 65, 55);
-    }
-}
-
-// Getter function to retrieve the Y position of the player
-double Player::getYPos() {
+//Accessor of y axis
+double Player::getYPos(){
     return gravity;
 }
 
-// Uncomment this function and add the necessary code when rendering is implemented
-// void Player::Render(SDL_Renderer* ren) {
-//     SDL_RenderCopy(ren, getTexture(), &getSrc(), &getDest());
-// }
+//resetting all the initial values of this class, for restart
+void Player::Reset(){
+    double gravity=250;
+    double speed=0;
+    int time=0;
+    setSource(150,250,65,55);
+    setDest(150,250,65,55);
+}

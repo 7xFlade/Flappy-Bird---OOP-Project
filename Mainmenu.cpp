@@ -1,20 +1,18 @@
 #include "MainMenu.hpp"
 
-// Initializes the isClicked member variable to false
 MainMenu::MainMenu()
 {
 	isClicked = false;
 }
 
-// Initializes the main menu by creating a texture for the menu background using the CreateTexture function
+//loading the image of background
 void MainMenu::Initialize(SDL_Renderer* ren)
 {
-	menuBackground.CreateTexture("image/Mainmenu.png", ren);
+	menuBackground.CreateTexture("image/Main.png", ren);
 }
 
-// Handles SDL events, particularly checking for quit events and mouse button clicks within a specific region on the screen.
-// If the user clicks within the defined region (rectangle defined by coordinates), it sets the isClicked flag to true.
-// Returns -1 if the quit event is detected
+
+//checking whether start game option is selected or not
 int MainMenu::EventHandling(SDL_Event& e)
 {
 	SDL_PollEvent(&e);
@@ -30,19 +28,16 @@ int MainMenu::EventHandling(SDL_Event& e)
 	return 0;
 }
 
-// Renders the main menu by rendering the background texture using the Render function.
 void MainMenu::Render(SDL_Renderer* ren)
 {
 	menuBackground.Render(ren);
 }
 
-// Getter function to retrieve the value of the isClicked flag.
 bool MainMenu::getClicked()
 {
 	return isClicked;
 }
 
-// Resets the isClicked flag to false when the object is destroyed
 MainMenu::~MainMenu()
 {
 	isClicked = false;

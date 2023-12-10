@@ -1,6 +1,7 @@
 #include "BirdB.hpp"
 #include "TextureManager.hpp"
-// The Render method is used to render the bird based on its frame rate
+
+//rendering between 3 frames of blue birds to make its wings flap
 void BirdB::Render(SDL_Renderer* ren){
     
     frate++;
@@ -20,14 +21,17 @@ void BirdB::Render(SDL_Renderer* ren){
 	{
 		frate = 0;
 	}
-//polymorphic behaviour
-//we need two more create texture operation since one instance of the bird is already instantiated when the game loads. After that we only have two more pictures to cater out of the four for BirdB
+
 }
 
-// createTexture1 and createTexture2 methods are used to create additional textures
+//For the seconf and third frame of the blue bird
 void BirdB::createTexture1(const char* address, SDL_Renderer* ren){
     Tex1=TextureManager::Texture(address, ren);
 }
 void BirdB::createTexture2(const char* address, SDL_Renderer* ren){
     Tex2=TextureManager::Texture(address, ren);
 }
+void BirdB::createTexture3(const char* address, SDL_Renderer* ren){
+    std::cout<<"No need"<<std::endl;
+}
+

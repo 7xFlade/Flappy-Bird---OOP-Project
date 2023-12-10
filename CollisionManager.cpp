@@ -1,17 +1,15 @@
 #include "CollisionManager.hpp"
 
-bool CollisionManager::checkCollision(SDL_Rect* A, SDL_Rect* B)
+//Checks for collision by finding intersection of two sdl_Rects
+bool CollisionManager::checkCollision(SDL_Rect *A, SDL_Rect *B)
 {
-	//checking for collision using standard SDL function
-    SDL_bool Collision = SDL_HasIntersection(A, B);
+	SDL_bool Collision = SDL_HasIntersection(A, B);
 	if (Collision)
-	{   return true;
+	{
+		return true;
 	}
-	else{
+	else
+	{
 		return false;
-    }
+	}
 }
-
-// bool CollisionManager::checkCollision(SDL_Rect* A, SDL_Rect* B) {
-//     return SDL_HasIntersection(A, B) == SDL_TRUE;
-// }
