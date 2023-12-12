@@ -1,7 +1,8 @@
 #include "TextureManager.hpp"
 
-//reading the files and craeting textures
-SDL_Texture* TextureManager::Texture(const char* filelocation, SDL_Renderer* ren){
+//reading the files and creating textures
+SDL_Texture* TextureManager::Texture(const char* filelocation, SDL_Renderer* ren)
+{
     SDL_Surface* surface;
     surface=IMG_Load(filelocation);
     SDL_Texture* tex;
