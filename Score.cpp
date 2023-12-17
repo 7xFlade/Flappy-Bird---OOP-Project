@@ -26,3 +26,9 @@ int Score::getScore() const{
 int Score::getHighschore() const{
     return highscore;
 }
+//setting highscore via overloading
+void Score::operator=(const int x){
+    if (x>highscore){
+        highscore=x;
+    }
+}

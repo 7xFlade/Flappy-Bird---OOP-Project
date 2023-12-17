@@ -13,5 +13,6 @@ class Score{
         int getScore() const;
         int getHighschore() const;
         int operator++(int);
+        void operator=(const int x);
         
 };

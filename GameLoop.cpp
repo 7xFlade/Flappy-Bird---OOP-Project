@@ -188,7 +188,8 @@ void GameLoop::Endgame()
         // Render and update the score
         score1 = score.getScore() / 50;
         score1 = s / 50;
-        score.setHighscore(score1); ////
+        //score.setHighscore(score1); ////
+        score=score1;
         int score2 = score.getHighschore();
         char scoreText[50];
         char highscoreText[50];
@@ -252,7 +253,8 @@ void GameLoop::Endgame()
 //will be used before user starts the game
 void GameLoop::SetHighscore()
 {
-    score.setHighscore(0);
+    //score.setHighscore(0);
+    score=0;
 }
 
 // keyboard connectivity
@@ -481,7 +483,8 @@ void GameLoop::Render() {
 
     
     score1 = s / 50;
-    score.setHighscore(score1);////
+    //score.setHighscore(score1);////
+    score=score1;
     char scoreText[50];
     sprintf(scoreText, " %d", score1);
     if (scoreTexture)
@@ -564,4 +567,8 @@ GameLoop &GameLoop::operator=(const GameLoop &other) {
         Pipe_Below3 = other.Pipe_Below3;
     }
     return *this;
+}
+
+void GameLoop::operator=(const bool x){
+    startState=x;
 }
