@@ -4,7 +4,8 @@
 #include "Background.hpp"
 
 //Instructions Screen
-class Instructions{
+class Instructions
+{
     public:
         bool next;
         Background inst; //aggregation of Background
@@ -15,6 +16,4 @@ class Instructions{
         int EventHandling(SDL_Event& e);
         void Render(SDL_Renderer* ren);
         bool getNext() const;
-
-
 };
