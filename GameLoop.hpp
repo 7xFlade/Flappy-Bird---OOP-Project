@@ -18,7 +18,6 @@
 #include "PauseScreen.hpp"
 #include "Instruction.hpp"
 #include "soundManager.hpp"
-#include "NueralNetwork.hpp"
 #include <iostream>
 using namespace std;
 
@@ -40,10 +39,7 @@ private:
 	Obstacles Pipe_Below2;
 	Obstacles Pipe_Above3;
 	Obstacles Pipe_Below3;
-
-
     SDLManager sound;
-    NeuralNetwork neuralNetwork;
     Score score;
     MainMenu menu;
     SelectBird sb;
@@ -56,9 +52,6 @@ private:
     const int Width = 800; 
 
     //Helpful for continuos generation of obstacles
-    int points = 0;
-	int generations = 0;
-	int nextCheckPoint = 0;
 	int variance1 = rand() % 201 - 100;
 	int variance2 = rand() % 201 - 100;
 	int variance3 = rand() % 201 - 100;
@@ -97,4 +90,6 @@ public:
     void Render();
     void Clear();
     void bgMusic();
+    GameLoop(const GameLoop& other);
+    GameLoop &operator=(const GameLoop &other);
 };

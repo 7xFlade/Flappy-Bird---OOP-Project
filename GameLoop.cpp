@@ -1,36 +1,42 @@
 #include "GameLoop.hpp"
 
+//constructor --Player class pointers assigned to base class birds
 GameLoop::GameLoop() : window(nullptr), renderer(nullptr), GameState(false), PauseState(false), startState(false), p(new BirdB()), y(new BirdY()), o(new BirdO())
-{
+{   //want birds to start from middle of y axis of screen and a fixed x axis
     p->setSource(0, 0, 65, 55);
     p->setDest(250, Height / 2, 65, 55);
     y->setSource(0, 0, 65, 55);
     y->setDest(250, Height / 2, 65, 55);
     o->setSource(0, 0, 65, 55);
     o->setDest(250, Height / 2, 65, 55);
+    //the base ground
     ground1.setSource(0, 0, 336, 112);
     ground1.setDest(0, 520, 336, 112);
     ground2.setSource(0, 0, 336, 112);
     ground2.setDest(0, 520, 336, 112);
+    //obstacles that will be appearing from above and below
     Pipe_Above1.setSource(0, 0, 52, 320);
     Pipe_Above1.setDest(0, -200, 52, 320);
     Pipe_Below1.setSource(0, 0, 52, 320);
     Pipe_Below1.setDest(0, 350, 52, 320);
     Pipe_Above2.setSource(0, 0, 52, 320);
     Pipe_Above2.setDest(0, -200, 52, 320);
-    Pipe_Below2.setSource(0, 0, 52, 320);
-    Pipe_Below2.setDest(0, 350, 52, 320);
+    Pipe_Below2.setSource(0, 0, 52, 290);
+    Pipe_Below2.setDest(0, 350, 52, 290);
     Pipe_Above3.setSource(0, 0, 52, 320);
     Pipe_Above3.setDest(0, -200, 52, 320);
     Pipe_Below3.setSource(0, 0, 52, 320);
     Pipe_Below3.setDest(0, 350, 52, 320);
 }
 
+//mutator of startstate to change it in between our main gameloop
 void GameLoop::setStartState(const bool x)
 {
     startState = x;
 }
 
+
+//following are accessors of gamestate, pausestate, and start state
 bool GameLoop::getGameState() const
 {
     return GameState;
@@ -46,6 +52,7 @@ bool GameLoop::getStartState() const
     return startState;
 }
 
+//Initializing sdl and making window, also creating textures of the objects(only once in the beginning)
 void GameLoop::Initialize()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -71,12 +78,12 @@ void GameLoop::Initialize()
             b.CreateTexture("image/bg1.png", renderer);
             ground1.CreateTexture("image/Tile (1).png", renderer);
             ground2.CreateTexture("image/Tile (1).png", renderer);
-            Pipe_Above1.CreateTexture("Image/brick_3 (1).png", renderer);
+            Pipe_Above1.CreateTexture("Image/spike 1.png", renderer);
             Pipe_Below1.CreateTexture("Image/brick_3.png", renderer);
             Pipe_Above2.CreateTexture("Image/brick_3 (1).png", renderer);
-            Pipe_Below2.CreateTexture("Image/spike B.png", renderer);
+            Pipe_Below2.CreateTexture("Image/spike 2 (1).png", renderer);
             Pipe_Above3.CreateTexture("Image/brick_3 (1).png", renderer);
-            Pipe_Below3.CreateTexture("Image/brick_3.png", renderer);
+            Pipe_Below3.CreateTexture("Image/spike B.png", renderer);
         }
         else
         {
@@ -90,15 +97,15 @@ void GameLoop::Initialize()
 }
 // background music
 void GameLoop::bgMusic()
-{
-    sound.initializeSDL(); // background music
+{   //referring to methods of soundManager
+    sound.initializeSDL(); 
     sound.loadMedia();
 }
 // Main menu
 void GameLoop::MainMenu()
-{
+{   //referring to methods of Mainmenu class
     menu.Initialize(renderer);
-    while (!menu.getClicked())
+    while (!menu.getClicked())//if start game is not clicked keep on rendering until user quits
     {
         if (menu.EventHandling(event1) == -1)
         {
@@ -112,9 +119,9 @@ void GameLoop::MainMenu()
 }
 // Instructions
 void GameLoop::Instructions()
-{
+{   //referring to methods of Instructions class
     ins.Initialize(renderer);
-    while (!ins.getNext())
+    while (!ins.getNext())//if arrow is not clicked keep on rendering until user quits
     {
         if (ins.EventHandling(event1) == -1)
         {
@@ -128,9 +135,9 @@ void GameLoop::Instructions()
 }
 // selct your bird page
 void GameLoop::SelectBird()
-{
+{   //referring to methods of SelectBird class
     sb.Initialize(renderer);
-    while (!sb.getChosenB())
+    while (!sb.getChosenB())//if any bird is not chosen keep on rendering until user quits
     {
         if (sb.EventHandling(event1) == -1)
         {
@@ -144,7 +151,7 @@ void GameLoop::SelectBird()
 }
 // pause functionality
 void GameLoop::Paused()
-{
+{   //referring to methods of PauseScreen class
     PScreen.Initialize(renderer);
     SDL_RenderClear(renderer);
     PScreen.Render(renderer);
@@ -154,19 +161,16 @@ void GameLoop::Paused()
 void GameLoop::Endgame()
 {
     ew.Initialize(renderer);
-
-
-
-    //Initialize TTF and font
+    //displaying score at the end screen
+   //Initialize TTF and font
     TTF_Init();
+    //path will be changed accordingly
     TTF_Font *font = TTF_OpenFont("C:\\Users\\A450L\\Downloads\\OOP-Project-Manal-Moiz-Naaseh-main\\OOP-Project-Manal-Moiz-Naaseh-main\\font3.ttf", 25);
     SDL_Color text_color = {0, 0, 0};
     SDL_Texture *scoreTexture = nullptr;
     SDL_Surface *scoreSurface = nullptr;
     SDL_Texture *highscoreTexture = nullptr;
     SDL_Surface *highscoreSurface = nullptr;
-
-
 
     while (!ew.getRestart())
     {
@@ -176,17 +180,15 @@ void GameLoop::Endgame()
             // sound.closeSDL();
             break;
         }
-        // Your existing rendering code for end window
+        //rendering code for end window
         SDL_RenderClear(renderer);
         ew.Render(renderer);
-        //SDL_RenderPresent(renderer);
 
 
         // Render and update the score
-        //score1 = score.getScore() / 50;
+        score1 = score.getScore() / 50;
         score1 = s / 50;
         score.setHighscore(score1); ////
-
         int score2 = score.getHighschore();
         char scoreText[50];
         char highscoreText[50];
@@ -223,20 +225,15 @@ void GameLoop::Endgame()
 
         SDL_RenderPresent(renderer);
 
-
-
-
-
     }
     // // if restart clicked
     if (ew.getRestart())
     {
         GameState = true;
         startState = true;
-        //score.setscore(0);
         s=0;
         ew.setRestart(false);
-        Reset();
+        Reset();//reset every thing to initial condition-Reset() defined below
     }
 
     if (scoreTexture)
@@ -247,12 +244,12 @@ void GameLoop::Endgame()
     {
         SDL_DestroyTexture(highscoreTexture);
     }
-
+    //closing sdl font display
     TTF_CloseFont(font);
     TTF_Quit();
 }
     
-
+//will be used before user starts the game
 void GameLoop::SetHighscore()
 {
     score.setHighscore(0);
@@ -293,65 +290,12 @@ void GameLoop::Event()
 
 // updating x/y axis values of objects
 void GameLoop::Update()
-{ // score display during game
-
-    ///////////////
+{ 
     timer++;
-    if (timer > 100)
-    {
-        if (sb.getBird() == 1)
-        {
-            neuralNetwork.Update(p->getYPos(), nextCheckPoint);
-        }
-        else if (sb.getBird() == 2)
-        {
-            neuralNetwork.Update(y->getYPos(), nextCheckPoint);
-        }
-        else if (sb.getBird() == 3)
-        {
-            neuralNetwork.Update(o->getYPos(), nextCheckPoint);
-        }
-
-        // Finding closest Checkpoint !
-        if (Pipe_Below1.getPipe1X() < Pipe_Below2.getPipe2X() && Pipe_Below1.getPipe1X() < Pipe_Below3.getPipe3X())
-        {
-            if (Pipe_Below1.getPipe1X() < -5)
-            {
-                nextCheckPoint = Pipe_Below2.getPipe2Y();
-            }
-            else
-            {
-                nextCheckPoint = Pipe_Below1.getPipe1Y();
-            }
-        }
-        else if (Pipe_Below2.getPipe2X() < Pipe_Below1.getPipe1X() && Pipe_Below2.getPipe2X() < Pipe_Below3.getPipe3X())
-        {
-            if (Pipe_Below2.getPipe2X() < -5)
-            {
-                nextCheckPoint = Pipe_Below3.getPipe3Y();
-            }
-            else
-            {
-                nextCheckPoint = Pipe_Below2.getPipe2Y();
-            }
-        }
-        else if (Pipe_Below3.getPipe3X() < Pipe_Below1.getPipe1X() && Pipe_Below3.getPipe3X() < Pipe_Below2.getPipe2X())
-        {
-            if (Pipe_Below3.getPipe3X() < -5)
-            {
-                nextCheckPoint = Pipe_Below1.getPipe1Y();
-            }
-            else
-            {
-                nextCheckPoint = Pipe_Below3.getPipe3Y();
-            }
-        }
-    }
-    //points = score.getScore();
-    
     bool flag1 = false, flag2 = false;
     ground1.GroundUpdate1();
     ground2.GroundUpdate2();
+    //the pipes that exit the screen are being updated to reappear from right side of screen but with different orientation(height)
     if (timer > 100)
     {
         flag1 = Pipe_Above1.Pipe_Above1Update(variance1, s);
@@ -382,7 +326,7 @@ void GameLoop::Update()
             Pipe_Below3.Pipe_Below3Update(variance3, s);
         }
     }
-
+    //updating the movement of birds to give them the flapping effect and apply gravity to them
     if (sb.getBird() == 1)
     {
         p->Update();
@@ -395,11 +339,10 @@ void GameLoop::Update()
     {
         o->Update();
     }
-    //score.scoreInc();
     //operator overloading
     s+=score++;
     std::cout<<s<<std::endl;
-    //double a = score.getScore();
+    //to check for collision throughout the runtime of game
     CollisionDetection();
 }
 
@@ -407,15 +350,16 @@ void GameLoop::Update()
 void GameLoop::CollisionDetection()
 {
     if (sb.getBird() == 1)
-    {
+    {   //checks for collison of blue bird bird with obstacles
         if (CollisionManager::checkCollision(&p->getDest(), &Pipe_Above1.getDest()) || CollisionManager::checkCollision(&p->getDest(), &Pipe_Below1.getDest()) ||
             CollisionManager::checkCollision(&p->getDest(), &Pipe_Above2.getDest()) || CollisionManager::checkCollision(&p->getDest(), &Pipe_Below2.getDest()) ||
             CollisionManager::checkCollision(&p->getDest(), &Pipe_Above3.getDest()) || CollisionManager::checkCollision(&p->getDest(), &Pipe_Below3.getDest()))
         {
             sound.loadMedia1(); // collision sound
-            Reset();
-            GameState = false;
+            Reset();//reset every value to initial state
+            GameState = false;//through this the game will exit the main loop
         }
+        //checks for collison of blue bird bird with ground
         if (CollisionManager::checkCollision(&p->getDest(), &ground1.getDest()))
         {
             sound.loadMedia1();
@@ -430,6 +374,7 @@ void GameLoop::CollisionDetection()
             GameState = false;
         }
     }
+    //for yellow bird
     else if (sb.getBird() == 2)
     {
         if (CollisionManager::checkCollision(&y->getDest(), &Pipe_Above1.getDest()) || CollisionManager::checkCollision(&y->getDest(), &Pipe_Below1.getDest()) ||
@@ -454,6 +399,8 @@ void GameLoop::CollisionDetection()
             GameState = false;
         }
     }
+
+    //for the owl
     else if (sb.getBird() == 3)
     {
         if (CollisionManager::checkCollision(&o->getDest(), &Pipe_Above1.getDest()) || CollisionManager::checkCollision(&o->getDest(), &Pipe_Below1.getDest()) ||
@@ -483,7 +430,6 @@ void GameLoop::CollisionDetection()
 // reseting all the values, when game restarted
 void GameLoop::Reset()
 {
-    points = 0;
     variance1 = rand() % 201 - 100;
     variance2 = rand() % 201 - 100;
     variance3 = rand() % 201 - 100;
@@ -501,11 +447,12 @@ void GameLoop::Reset()
 
 void GameLoop::Render() {
     t1++;
-    ///we can mpre font saying 123 fly
+    //clear any rendering before this
     SDL_RenderClear(renderer);
-
+    //background render
     b.Render(renderer); 
     if (t1>100){
+        //rendering of objects
         Pipe_Above1.Render(renderer);
         Pipe_Below1.Render(renderer);
         Pipe_Above2.Render(renderer);
@@ -525,7 +472,7 @@ void GameLoop::Render() {
         o->Render(renderer);
     }
     
-    //SDL_RenderPresent(renderer);
+    //displaying the current score during game
     TTF_Init();
     TTF_Font *font = TTF_OpenFont("C:\\Users\\A450L\\Downloads\\OOP-Project-Manal-Moiz-Naaseh-main\\OOP-Project-Manal-Moiz-Naaseh-main\\font3.ttf", 55);
     SDL_Color text_color = {0, 0, 0};
@@ -575,4 +522,46 @@ GameLoop::~GameLoop()
     p = nullptr;
     y = nullptr;
     o = nullptr;
+}
+//Rule of 3
+//copy constructor
+GameLoop::GameLoop(const GameLoop& other) : window(other.window), renderer(other.renderer),
+                                       GameState(other.GameState), PauseState(other.PauseState),
+                                       startState(other.startState), p(new BirdB()),
+                                       y(new BirdY()), o(new BirdO()),
+                                       ground1(other.ground1), ground2(other.ground2),
+                                       Pipe_Above1(other.Pipe_Above1), Pipe_Below1(other.Pipe_Below1),
+                                       Pipe_Above2(other.Pipe_Above2), Pipe_Below2(other.Pipe_Below2),
+                                       Pipe_Above3(other.Pipe_Above3), Pipe_Below3(other.Pipe_Below3) {}
+
+//assignment operator overloading
+GameLoop &GameLoop::operator=(const GameLoop &other) {
+    if (this != &other) {
+        // Copy data from the source object
+        window = other.window;
+        renderer = other.renderer;
+        GameState = other.GameState;
+        PauseState = other.PauseState;
+        startState = other.startState;
+
+        // Delete existing objects
+        delete p;
+        delete y;
+        delete o;
+
+        // Create new objects and copy data
+        p = new BirdB();
+        y = new BirdY();
+        o = new BirdO();
+
+        ground1 = other.ground1;
+        ground2 = other.ground2;
+        Pipe_Above1 = other.Pipe_Above1;
+        Pipe_Below1 = other.Pipe_Below1;
+        Pipe_Above2 = other.Pipe_Above2;
+        Pipe_Below2 = other.Pipe_Below2;
+        Pipe_Above3 = other.Pipe_Above3;
+        Pipe_Below3 = other.Pipe_Below3;
+    }
+    return *this;
 }

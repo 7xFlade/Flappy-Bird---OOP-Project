@@ -6,7 +6,7 @@
 class EndWindow{
     public:
         bool restart=false;
-        Background endBackground; 
+        Background endBackground; //aggregation of Background class
     public:
         EndWindow();
         ~EndWindow();

@@ -1,11 +1,11 @@
 
 #include "GameLoop.hpp"
-GameLoop* g = new GameLoop();
+// GameLoop* g = new GameLoop();
 
 int main(int argc, char* argv[]) {
     double first;
     double last;
-
+    GameLoop* g = new GameLoop();
     // Initialize the game loop and set highscore to 0
     g->Initialize();
     g->SetHighscore();
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 
     g->Clear();
     g->~GameLoop();
-    delete g; // Don't forget to free the allocated memory
+    delete g; //free the allocated memory
     g=nullptr;
     return 0;
 }

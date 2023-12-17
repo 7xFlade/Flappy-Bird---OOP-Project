@@ -6,6 +6,10 @@ Object::Object(){
     Tex=nullptr;
 }
 
+Object::~Object(){
+    std::cout<<"Object destructed"<<std::endl;
+}
+
 //Accesors
 SDL_Texture* Object::getTexture() {
     return Tex;

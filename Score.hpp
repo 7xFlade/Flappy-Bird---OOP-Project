@@ -1,6 +1,6 @@
 #pragma once 
 
-//Manages score in a single game loop, and highscore for several restarts
+//Manages score in a single game loop, and highscore over several restarts
 class Score{
     private:
         int score;

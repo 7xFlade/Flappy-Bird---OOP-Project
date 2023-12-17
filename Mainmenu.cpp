@@ -33,11 +33,13 @@ void MainMenu::Render(SDL_Renderer* ren)
 	menuBackground.Render(ren);
 }
 
+//accessor 
 bool MainMenu::getClicked()
 {
 	return isClicked;
 }
 
+//destructor
 MainMenu::~MainMenu()
 {
 	isClicked = false;

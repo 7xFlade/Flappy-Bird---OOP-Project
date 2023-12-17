@@ -7,7 +7,7 @@
 //Pause screen
 class PauseScreen{
     public:
-        Background paused; 
+        Background paused; //aggreagtion of Background
     public:
         void Initialize(SDL_Renderer* ren);
         void Render(SDL_Renderer* ren);

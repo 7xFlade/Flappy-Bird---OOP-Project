@@ -3,6 +3,8 @@
 #include <SDL_image.h>
 #include <iostream>
 
+
+//Abstract class and parent of background, obstacle, player
 class Object{
     private:
         SDL_Rect src,dest;
@@ -19,5 +21,5 @@ class Object{
 
         void CreateTexture(const char* address, SDL_Renderer* ren);
         virtual void Render(SDL_Renderer* ren)=0;
-
+        virtual ~Object();
 };

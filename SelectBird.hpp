@@ -7,7 +7,7 @@
 class SelectBird{
     private:
         bool isChosenB;
-        Background m;
+        Background m;//aggreagation of Background
         int bird;//for maintaining record of which bird is chosen
     public:
         SelectBird();

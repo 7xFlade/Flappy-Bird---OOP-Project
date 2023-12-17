@@ -4,37 +4,37 @@ void Obstacles::Render(SDL_Renderer* ren){
     SDL_RenderCopy(ren, getTexture(), &getSrc(), &getDest());
 }
 
-//updating
+//updating x axis of obstacles once they dissappear from left side of the screen
 bool Obstacles::Pipe_Above1Update(int incY, int &score)
-{   if (score<=1500){
+{   if (score<=1500){//increase the speed of game by increasing their movement leftwards
 		this->incY1 = incY;
 		if (pipeDistance1 <= -100)
 		{
 			pipeDistance1 += 900;
-			//score++;
 			return true;
 		}
 		else
 		{
 			pipeDistance1-=3;
-			setSource(0, 0, 52,320);
-			setDest(pipeDistance1, -200 + this->incY1, 52,320);
+			//managing the height of the obstacle
+			setSource(0, 0, 52,292);
+			setDest(pipeDistance1, -120 + this->incY1, 52,292);
 			return false;
 		}
 	}
-	else if(score>1500 && score<=3000){
+	else if(score>1500 && score<=3000){//increase the speed of game by increasing their movement leftwards
 		this->incY1 = incY;
 		if (pipeDistance1 <= -100)
 		{
 			pipeDistance1 += 900;
-			//score++;
 			return true;
 		}
-		else
-		{	//cout<<sc.getScore();
+		else//increase the speed of game by increasing their movement leftwards
+		{	
 			pipeDistance1-=4;
-			setSource(0, 0, 52,320);
-			setDest(pipeDistance1, -200 + this->incY1, 52,320);
+			setSource(0, 0, 52,292);
+			//managing the height of the obstacle
+			setDest(pipeDistance1, -120 + this->incY1, 52,292);
 			return false;
 		}
 	}
@@ -49,8 +49,9 @@ bool Obstacles::Pipe_Above1Update(int incY, int &score)
 		else
 		{	//cout<<sc.getScore();
 			pipeDistance1-=5;
-			setSource(0, 0, 52,320);
-			setDest(pipeDistance1, -200 + this->incY1, 52,320);
+			setSource(0, 0, 52,292);
+			//managing the height of the obstacle
+			setDest(pipeDistance1, -120 + this->incY1, 52,292);
 			return false;
 		}
 	}
@@ -68,6 +69,7 @@ bool Obstacles::Pipe_Below1Update(int incY, int &score)
 		{
 			pipeDistance1-=3;
 			setSource(0, 0, 52,320);
+			//managing the height of the obstacle
 			setDest(pipeDistance1, 350 + this->incY1,52,320);
 			return false;
 		}
@@ -80,9 +82,10 @@ bool Obstacles::Pipe_Below1Update(int incY, int &score)
 			return true;
 		}
 		else
-		{	//cout<<sc.getScore();
+		{	
 			pipeDistance1-=4;
 			setSource(0, 0, 52,320);
+			//managing the height of the obstacle
 			setDest(pipeDistance1, 350 + this->incY1,52,320);
 			return false;
 		}
@@ -95,9 +98,10 @@ bool Obstacles::Pipe_Below1Update(int incY, int &score)
 			return true;
 		}
 		else
-		{	//cout<<sc.getScore();
+		{	
 			pipeDistance1-=5;
 			setSource(0, 0, 52,320);
+			//managing the height of the obstacle
 			setDest(pipeDistance1, 350 + this->incY1,52,320);
 			return false;
 		}
@@ -113,13 +117,13 @@ bool Obstacles::Pipe_Above2Update(int incY, int &score)
 		if (pipeDistance2 <= -100)
 		{
 			pipeDistance2 += 900;
-			//score++;
 			return true;
 		}
 		else
 		{
 			pipeDistance2-=3;
 			setSource(0, 0, 52,320);
+			//managing the height of the obstacle
 			setDest(pipeDistance2, -200 + this->incY1, 52,320);
 			return false;
 		}
@@ -133,9 +137,10 @@ bool Obstacles::Pipe_Above2Update(int incY, int &score)
 			return true;
 		}
 		else
-		{	//cout<<sc.getScore();
+		{	
 			pipeDistance2-=4;
 			setSource(0, 0, 52,320);
+			//managing the height of the obstacle
 			setDest(pipeDistance2, -200 + this->incY1, 52,320);
 			return false;
 		}
@@ -145,13 +150,13 @@ bool Obstacles::Pipe_Above2Update(int incY, int &score)
 		if (pipeDistance2 <= -100)
 		{
 			pipeDistance2 += 900;
-			//score++;
 			return true;
 		}
 		else
-		{	//cout<<sc.getScore();
+		{	
 			pipeDistance2-=5;
 			setSource(0, 0, 52,320);
+			//managing the height of the obstacle
 			setDest(pipeDistance2, -200 + this->incY1, 52,320);
 			return false;
 		}
@@ -168,10 +173,11 @@ bool Obstacles::Pipe_Below2Update(int incY, int &score)
 			return true;
 		}
 		else
-		{	//cout<<sc.getScore();
+		{	
 			pipeDistance2-=3;
-			setSource(0, 0, 52,320);
-			setDest(pipeDistance2, 350 + this->incY1,52,320);
+			setSource(0, 0, 52,290);
+			//managing the height of the obstacle
+			setDest(pipeDistance2, 350 + this->incY1,52,290);
 			return false;
 		}
 	}
@@ -183,10 +189,11 @@ bool Obstacles::Pipe_Below2Update(int incY, int &score)
 			return true;
 		}
 		else
-		{	//cout<<sc.getScore();
+		{	
 			pipeDistance2-=4;
-			setSource(0, 0, 52,320);
-			setDest(pipeDistance2, 350 + this->incY1,52,320);
+			setSource(0, 0, 52,290);
+			//managing the height of the obstacle
+			setDest(pipeDistance2, 350 + this->incY1,52,290);
 			return false;
 		}
 	}
@@ -198,10 +205,11 @@ bool Obstacles::Pipe_Below2Update(int incY, int &score)
 			return true;
 		}
 		else
-		{	//cout<<sc.getScore();
+		{	
 			pipeDistance2-=5;
-			setSource(0, 0, 52,320);
-			setDest(pipeDistance2, 350 + this->incY1,52,320);
+			setSource(0, 0, 52,290);
+			//managing the height of the obstacle
+			setDest(pipeDistance2, 350 + this->incY1,52,290);
 			return false;
 		}
 	}
@@ -214,13 +222,13 @@ bool Obstacles::Pipe_Above3Update(int incY, int &score)
 		if (pipeDistance3 <= -100)
 		{
 			pipeDistance3 += 900;
-			//score++;
 			return true;
 		}
 		else
 		{
 			pipeDistance3-=3;
 			setSource(0, 0, 52,320);
+			//managing the height of the obstacle
 			setDest(pipeDistance3, -200 + this->incY1, 52,320);
 			return false;
 		}
@@ -230,13 +238,13 @@ bool Obstacles::Pipe_Above3Update(int incY, int &score)
 		if (pipeDistance3 <= -100)
 		{
 			pipeDistance3 += 900;
-			//score++;
 			return true;
 		}
 		else
-		{	//cout<<sc.getScore();
+		{	
 			pipeDistance3-=4;
 			setSource(0, 0, 52,320);
+			//managing the height of the obstacle
 			setDest(pipeDistance3, -200 + this->incY1, 52,320);
 			return false;
 		}
@@ -246,13 +254,13 @@ bool Obstacles::Pipe_Above3Update(int incY, int &score)
 		if (pipeDistance3 <= -100)
 		{
 			pipeDistance3 += 900;
-			//score++;
 			return true;
 		}
 		else
-		{	//cout<<sc.getScore();
+		{	
 			pipeDistance3-=5;
 			setSource(0, 0, 52,320);
+			//managing the height of the obstacle
 			setDest(pipeDistance3, -200 + this->incY1, 52,320);
 			return false;
 		}

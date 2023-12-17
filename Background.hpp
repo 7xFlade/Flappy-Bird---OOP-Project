@@ -4,8 +4,7 @@
 class Background :public Object
 {
 private:
-	//attributes which will be used as x coordinate when updating ground
-	//attribute values initialized according to our requirements based on our testing
+	//attributes which will be used as x coordinate when updating the 2 grounds
 	int distance1 = 0;
 	int distance2 = 800;
 public:

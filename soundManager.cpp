@@ -1,8 +1,10 @@
 #include "soundManager.hpp"
 #include <stdio.h>
 
+//constructor
 SDLManager::SDLManager() : bgMusic(nullptr) {}
 
+//destructor
 SDLManager::~SDLManager() {
     bgMusic=nullptr;
     closeSDL();
@@ -34,6 +36,7 @@ bool SDLManager::loadMedia() {
     return true;
 }
 
+//loading the collison music file
 bool SDLManager::loadMedia1() {
     bgMusic = Mix_LoadMUS("collision_sound.wav");
     if (bgMusic == NULL) {
@@ -44,6 +47,7 @@ bool SDLManager::loadMedia1() {
     return true;
 }
 
+//closing sdl music
 void SDLManager::closeSDL() {
     Mix_FreeMusic(bgMusic);
     Mix_Quit();

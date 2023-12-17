@@ -1,5 +1,6 @@
 #include "Instruction.hpp"
 
+//constructor
 Instructions::Instructions()
 {
 	next = false;
@@ -33,11 +34,13 @@ void Instructions::Render(SDL_Renderer* ren)
 	inst.Render(ren);
 }
 
+//accessor
 bool Instructions::getNext() const
 {
 	return next;
 }
 
+//destructor
 Instructions::~Instructions()
 {
 	next = false;

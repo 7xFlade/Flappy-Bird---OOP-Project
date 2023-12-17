@@ -28,16 +28,20 @@ int EndWindow::EventHandling(SDL_Event& w)
 	return 0;
 }
 
+//Rendering the end window
 void EndWindow::Render(SDL_Renderer* ren)
 {
 	endBackground.Render(ren);
 }
 
+
+//accessor of whether restart clicked or not
 bool EndWindow::getRestart() const
 {
 	return restart;
 }
 
+//mutator to change restart to another bool value
 void EndWindow::setRestart(const bool s){
 	restart=s;
 }

@@ -7,7 +7,7 @@
 class MainMenu{
     public:
         bool isClicked;
-        Background menuBackground; 
+        Background menuBackground; //aggregation of Background
     public:
         MainMenu();
         ~MainMenu();

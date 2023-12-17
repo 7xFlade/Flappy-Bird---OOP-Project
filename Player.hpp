@@ -1,7 +1,7 @@
 #pragma once
 #include "Object.hpp"
 
-//Child class of Object, Parent of all Bird classes
+//Abstarct class and Child class of Object, Parent of all Bird classes
 class Player:public Object{
     private:
         //y axis coordinate
@@ -16,5 +16,6 @@ class Player:public Object{
         virtual void createTexture2(const char* address,SDL_Renderer* ren)=0;
         virtual void createTexture3(const char* address,SDL_Renderer* ren)=0;
         void Reset();
+        virtual ~Player();
         
 };

@@ -1,6 +1,20 @@
 #include "BirdB.hpp"
 #include "TextureManager.hpp"
 
+//constructor
+BirdO::BirdO():Tex1(nullptr),Tex2(nullptr),Tex3(nullptr),frate(0){}
+
+//destructor
+BirdO::~BirdO(){
+	Tex1=nullptr;
+	Tex2=nullptr;
+	Tex3=nullptr;
+	std::cout<<"Owl destructed"<<std::endl;
+}
+
+//copy constructor
+BirdO::BirdO(const BirdO& other):Tex1(other.Tex1),Tex2(other.Tex2),Tex3(other.Tex3),frate(other.frate){}
+
 //Rendering between 4 frames of owl to make appear flying
 void BirdO::Render(SDL_Renderer* ren){
     

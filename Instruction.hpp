@@ -7,7 +7,7 @@
 class Instructions{
     public:
         bool next;
-        Background inst; 
+        Background inst; //aggregation of Background
     public:
         Instructions();
         ~Instructions();

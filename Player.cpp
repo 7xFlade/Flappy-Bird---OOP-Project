@@ -12,7 +12,9 @@ void Player::Update(){//constant downward gravity
         }
     
 }
-void Player::Gravity(){//upward acceleration when up key clicked
+
+//manages the upward motion of bird when up key is pressed
+void Player::Gravity(){
     time++;
     setSource(0,0,65,55);
     if (time>100){//to not start updating immediately
@@ -35,4 +37,9 @@ void Player::Reset(){
     int time=0;
     setSource(150,250,65,55);
     setDest(150,250,65,55);
+}
+
+//virtual destructor because an abstract class
+Player::~Player(){
+    std::cout<<"Player destructed"<<std::endl;
 }
