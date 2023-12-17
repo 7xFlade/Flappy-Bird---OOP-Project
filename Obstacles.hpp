@@ -2,13 +2,13 @@
 #include "Background.hpp"
 #include "Object.hpp"
 
-class Obstacles:public Object{
+class Obstacles:public Object
+{
     private:
         //initializing the x axis of obstacles
         int pipeDistance1 = 700;
-	    int pipeDistance2 = 900;
-	    int pipeDistance3 = 1100;
-        //
+	int pipeDistance2 = 900;
+	int pipeDistance3 = 1100;
         int incY1 = 0;
         int incY2 = 0;
         int incY3 = 0;
