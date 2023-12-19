@@ -29,4 +29,3 @@ Final UML:
 
 Front End:
 
-![image](https://github.com/7xFlade/OOP-Project-Manal-Moiz-Naaseh/assets/122453916/22e450c7-09ff-4217-8119-5e336089bb26)
