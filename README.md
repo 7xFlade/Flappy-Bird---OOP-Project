@@ -9,6 +9,10 @@ Please change the path of font accordingly
 
 This project was an attempt to recreate and customise the world famous video game, Flappy Bird. 
 
+Command to run the game:
+
+g++ *.cpp -IC:\mingw_dev_lib\include\SDL2 -LC:\mingw_dev_lib\lib -w -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -o oop_project
+
 # OOP in C++ concepts implemented:
 
 1- Inheritance
