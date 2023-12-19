@@ -1,4 +1,4 @@
-# Project for Object Oriented Programming 
+# Flappy Bird in C++ using OOP
 Music license:
 Music: Pixelland by Kevin MacLeod
 Free download: https://filmmusic.io/song/4222-pixelland
