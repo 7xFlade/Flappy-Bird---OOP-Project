@@ -7,6 +7,8 @@ Licensed under CC BY 4.0: https://filmmusic.io/standard-license
 Sound files are too big to be included in this repository
 Please change the path of font accordingly
 
+This project was an attempt to recreate and customise the world famous video game, Flappy Bird. 
+
 OOP in C++ concepts implemented:
 1- Inheritance
 2- Polymorphism
